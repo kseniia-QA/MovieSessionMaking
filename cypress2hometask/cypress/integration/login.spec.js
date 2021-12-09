@@ -5,8 +5,6 @@ import '@4tw/cypress-drag-drop';
 
 
 
-
-
 describe('adminPage', () => {
       it('Checks the main admin page content', () => {
             cy.visit('http://qamid.tmweb.ru/admin')
@@ -18,7 +16,7 @@ describe('adminPage', () => {
       it('should check new movie adding', () => { //a failing test
             cy.visit('http://qamid.tmweb.ru/admin/');
             cy.login('qamid@qamid.ru', 'qamid');
-            cy.wait(500);
+     
 
             const movies = require("../../fixtures/niewMovies.json")
             movies.forEach(movie => {
@@ -27,12 +25,9 @@ describe('adminPage', () => {
                   movie.price;
 
                   cy.get('button.conf-step__button.conf-step__button-accent.button__add-hall').click()
-                  cy.wait(500)
                   cy.get('input.conf-step__input').eq(0).type(movie.hallTitle)
                   cy.get('input[data-event="hall_add"]').click()
-                  cy.wait(1000)
                   cy.get('input.conf-step__radio').eq(9).click().click()
-                  cy.wait(800)
                   cy.get('input.conf-step__input').eq(2).clear().type(movie.price)
 
                   cy.get('input.conf-step__button.conf-step__button-accent').eq(1).click()
@@ -66,7 +61,6 @@ describe('another test without failing', () => {
 
             cy.visit('http://qamid.tmweb.ru/admin/')
             cy.login('qamid@qamid.ru', 'qamid')
-            cy.wait(500)
             const movies = require("../../fixtures/niewMovies.json")
             movies.forEach(movie => {
                   movie.hallTitle;
@@ -74,12 +68,9 @@ describe('another test without failing', () => {
                   movie.price;
 
                   cy.get('button.conf-step__button.conf-step__button-accent.button__add-hall').click()
-                  cy.wait(500)
                   cy.get('input.conf-step__input').eq(0).type(movie.hallTitle)
                   cy.get('input.conf-step__button.conf-step__button-accent').eq(0).click()
-                  cy.wait(1000)
                   cy.get('input.conf-step__radio').eq(9).click().click()
-                  cy.wait(800)
                   cy.get('input.conf-step__input').eq(2).clear().type(movie.price)
 
                   cy.get('h3.conf-step__movie-title').eq(1).drag('div.conf-step__seances-timeline', {
